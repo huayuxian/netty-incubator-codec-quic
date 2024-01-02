@@ -204,14 +204,10 @@ jobs:
             android-maven-cache-
       - name: Build project
         run: ./mvnw -B -ntp --file pom.xml clean package -Dandroid
-
       - uses: actions/upload-artifact@v3
-        if: ${{ failure() }}
         with:
-          name: target
-          path: |
-            **/target/surefire-reports/
-            **/hs_err*.log
+          name: target1
+          path: "**/target/*.aar"
       - uses: actions/upload-artifact@v2
         if: ${{ success() }}
         with:
